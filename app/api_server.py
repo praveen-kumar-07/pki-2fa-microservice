@@ -1,4 +1,5 @@
-from fastapi import FastAPI, HTTPException, Body, JSONResponse
+from fastapi import FastAPI, HTTPException, Body
+from fastapi.responses import JSONResponse
 from app.pki_handler import decrypt_seed
 from app.auth_core import generate_totp_code, verify_totp_code, get_remaining_seconds
 import os
