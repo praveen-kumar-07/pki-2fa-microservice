@@ -1,0 +1,14 @@
+# Sensitive file - DO NOT COMMIT
+encrypted_seed.txt
+
+# Python artifacts
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+
+# IDE and OS files
+.vscode/
+.idea/
+Thumbs.db

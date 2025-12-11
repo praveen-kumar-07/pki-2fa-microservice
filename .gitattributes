@@ -1,0 +1,5 @@
+# Ensure PEM files use LF (Unix) line endings
+*.pem text eol=lf
+
+# Ensure cron config uses LF (Unix) line endings
+cron/2fa-cron text eol=lf
