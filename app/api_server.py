@@ -1,9 +1,11 @@
 from fastapi import FastAPI, HTTPException, Body
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse # <-- THIS IS THE CRITICAL FIX
 from app.pki_handler import decrypt_seed
 from app.auth_core import generate_totp_code, verify_totp_code, get_remaining_seconds
 import os
 from cryptography.hazmat.primitives import serialization
+
+# ... rest of the code ...
 
 app = FastAPI()
 SEED_PATH = "/data/seed.txt" 
