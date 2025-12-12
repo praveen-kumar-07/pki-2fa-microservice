@@ -2,7 +2,11 @@
 import datetime
 import sys
 import os
-from app.auth_core import generate_totp_code # Imports auth_core successfully
+import sys
+sys.path.append("/app")
+
+from app.auth_core import generate_totp_code
+
 
 SEED_PATH = "/data/seed.txt"
 LOG_PATH = "/cron/last_code.txt"
