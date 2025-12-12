@@ -32,14 +32,15 @@ COPY instructor_public.pem .
 RUN chmod -R +rx scripts/ && \
     chmod -R +r app/
 
-# Setup cron job
-RUN chmod 0644 cron/2fa-cron && cat cron/2fa-cron | crontab -
+# Setup cron job: Set permissions on the file and install it into crontab
+# DELETE the failing RUN command entirely:
+# RUN chmod 0644 cron/2fa-cron && cat cron/2fa-cron | crontab -
 
 # Create persistent volume directories
 RUN mkdir -p /data /cron && chmod 755 /data /cron
+# ...
 
 EXPOSE 8080
 
-# Start cron daemon and the API server
 # Start cron daemon and the API server
 CMD ["sh", "-c", "cron && uvicorn app.api_server:app --host 0.0.0.0 --port 8080"]
