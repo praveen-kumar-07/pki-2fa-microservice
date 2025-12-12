@@ -28,6 +28,10 @@ COPY cron/ cron/
 COPY student_private.pem .
 COPY instructor_public.pem .
 
+# 1. Ensure scripts are executable and app files are readable (Permission fix)
+RUN chmod -R +rx scripts/ && \
+    chmod -R +r app/
+
 # Setup cron job
 RUN chmod 0644 cron/2fa-cron && cat cron/2fa-cron | crontab -
 
@@ -36,5 +40,6 @@ RUN mkdir -p /data /cron && chmod 755 /data /cron
 
 EXPOSE 8080
 
+# Start cron daemon and the API server
 # Start cron daemon and the API server
 CMD ["sh", "-c", "cron && uvicorn app.api_server:app --host 0.0.0.0 --port 8080"]
