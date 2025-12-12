@@ -1,1 +1,1 @@
-* * * * * cd /app && /usr/local/bin/python3 -m scripts.totp_logger >> /cron/last_code.txt 2>&1
+* * * * * PYTHONPATH=/app cd /app && python3 -m scripts.totp_logger >> /cron/last_code.txt 2>&1
